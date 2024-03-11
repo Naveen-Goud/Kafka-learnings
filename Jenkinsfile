@@ -4,19 +4,19 @@ pipeline{
        stages {  
         stage("Build"){
             steps{
-                sh 'cd Kafka-learnings && mvn clean'
+                sh 'mvn clean'
                 echo "starting with the process"
             }
         }
         stage('Test') {
             steps { 
-                sh 'cd Kafka-learnings && mvn compile test'
+                sh 'mvn compile test'
             }
         } 
         
         stage('Package') {
             steps {  
-                sh 'cd Kafka-learnings && mvn package'
+                sh 'mvn package'
                 echo 'Deploying...'
             }
         }
