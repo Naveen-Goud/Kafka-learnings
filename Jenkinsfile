@@ -1,27 +1,23 @@
 pipeline{
     agent any
 
-       stages {
-        stage('Checkout') {
-            steps { 
-                git 'https://github.com/Naveen-Goud/Kafka-learnings/'
-            }
-        }
-        
-        stage("testing"){
+       stages {  
+        stage("Build"){
             steps{
+                sh 'cd Kafka-learnings && mvn clean'
                 echo "starting with the process"
             }
         }
-        stage('Build and Test') {
+        stage('Test') {
             steps { 
-                sh 'mvn clean compile test'
+                sh 'cd Kafka-learnings && mvn compile test'
             }
         } 
         
         stage('Package') {
             steps {  
-                sh 'mvn package'
+                sh 'cd Kafka-learnings && mvn package'
+                echo 'Deploying...'
             }
         }
     }
