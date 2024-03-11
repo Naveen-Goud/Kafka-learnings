@@ -2,9 +2,13 @@ pipeline{
     agent any
 
        stages {  
+
         stage("Build"){
             steps{
-                sh 'mvn clean'
+                  sh """
+                    cd final Assignment/producer-cab_driver &&
+                    mvn clean
+                """
                 echo "starting with the process"
             }
         }
