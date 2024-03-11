@@ -14,13 +14,13 @@ pipeline{
         }
         stage('Test') {
             steps { 
-                sh 'mvn compile test'
+                sh 'cd final-Assignment/producer-cab_driver && mvn compile test'
             }
         } 
         
         stage('Package') {
             steps {  
-                sh 'mvn package'
+                sh 'cd final-Assignment/producer-cab_driver && mvn package'
                 echo 'Deploying...'
             }
         }
