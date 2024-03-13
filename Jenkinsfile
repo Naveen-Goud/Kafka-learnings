@@ -6,7 +6,7 @@ pipeline{
         stage("Build"){
             steps{
                   sh """
-                    cd final-Assignment/producer-cab_driver &&
+                    cd final-Assignment/producer &&
                     mvn clean
                 """
                 echo "starting with the process"
@@ -14,11 +14,11 @@ pipeline{
         }
         stage('Test') {
             steps { 
-                sh """cd final-Assignment/producer-cab_driver && mvn -B verify """
+                sh """cd final-Assignment/producer && mvn -B verify """
             }
         } 
         
-        stage('Package') {
+        stage('Deploy') {
             steps {  
                 echo 'Deploying...'
             }
